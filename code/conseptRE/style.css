@@ -1,0 +1,226 @@
+* {
+  margin: 0;                            /* デフォルトの余白をリセット */
+  padding: 0;                           /* デフォルトの内側余白をリセット */
+  box-sizing: border-box;              /* パディングやボーダーを含めてサイズ計算 */
+}
+body {
+  font-family: 'Helvetica Neue', sans-serif;  /* フォント設定 */
+  color: #fff;                                 /* テキスト色：白 */
+  overflow-x: hidden;                          /* 横スクロールを防ぐ */
+  background-color: #000000;                       /* 背景色：黒に近い */
+  position: relative;                          /* 子要素のposition制御用に相対配置 */
+}
+nav {
+  position: fixed;                             /* 画面上部に固定表示 */
+  width: 100%;                                 /* 幅を全体に */
+  top: 0;                                      /* 上端に配置 */
+  background: rgba(0,0,0,0.5);                 /* 半透明の黒背景 */
+  padding: 20px;                               /* 内側余白 */
+  display: flex;                               /* フレックスボックスで横並び */
+  justify-content: space-between;             /* 左右に要素を配置 */
+  z-index: 1000;                               /* 他要素より手前に表示 */
+}
+nav h1 {
+  margin: 0;                                   /* 余白なし */
+  padding: 0px 20px;                           /* 左右に余白 */
+  font-size: 1.5rem;                           /* フォントサイズ */
+  color: #fff;                                 /* テキスト色：白 */
+}
+nav ul {
+  display: flex;                               /* 横並びにする */
+  list-style: none;                            /* リストマーカーなし */
+  gap: 20px;                                   /* 要素間の間隔 */
+  margin-left: auto;                           /* 右寄せ */
+}
+nav a {
+  text-decoration: none;                       /* 下線を消す */
+  color: #fff;                                 /* リンク文字色 */
+  transition: 0.2s;                            /* ホバー時の変化を滑らかに */
+}
+.nav-list li a:hover {
+  color: #3a23ec;                              /* ホバー時の文字色変更（黄） */
+}
+
+.intro {
+  height: 200px;
+  text-align: center;
+  padding: 80px 20px;
+  background-image: url("../img/siberia-9680842_1280.webp");
+  background-size: cover;
+  background-position: center;
+  color: rgb(255, 255, 255);
+}
+.intro-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* キャンバス */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* メインコンテンツ */
+main {
+  padding-top: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+}
+
+/* 紹介テキスト */
+.intro {
+  text-align: center;
+  margin: 50px 0;
+}
+
+/* カラム配置 */
+.columns {
+  display: flex;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
+}
+.columns .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1; /* 背景なので背面へ */
+  border-radius: 20px; /* カラムの形に合わせるなら */
+}
+
+/* カラム共通スタイル */
+.col {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  width: 30%;
+  text-align: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  user-select: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.slideshow-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px;
+  background-color: #111;
+}
+
+.slideshow-container {
+  flex: 1 1 50%;
+  max-width: 600px;
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.comment-container {
+  flex: 1 1 40%;
+  max-width: 500px;
+  position: relative;
+  height: 400px;
+}
+
+.comment-slide {
+  position: absolute;
+  width: 100%;
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+
+.comment-slide .title {
+  padding: 40px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #4f5df7;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  transform: perspective(600px) rotateX(10deg);
+}
+
+.comment-slide p {
+  padding: 20px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* 表示中クラス */
+.active {
+  opacity: 1;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .slideshow-section {
+    flex-direction: column;
+  }
+
+  .slideshow-container,
+  .comment-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .slideshow-container {
+    height: 300px;
+  }
+
+  .comment-container {
+    text-align: center;
+    height: auto;
+    margin-top: 20px;
+  }
+}
+
