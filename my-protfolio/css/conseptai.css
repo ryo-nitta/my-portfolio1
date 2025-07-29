@@ -1,0 +1,268 @@
+/* --- ベース --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #0d0d0d;
+  color: #fff;
+  overflow-x: hidden;
+}
+header {
+  background: #111;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+header h1 {
+  font-size: 1.5rem;
+  color: #d5ff3e;
+}
+header a{
+  text-decoration: none;                       /* 下線を消す */
+  color: #fff;                                 /* リンク文字色 */
+}
+nav a {
+  text-decoration: none;                       /* 下線を消す */
+  color: #fff;                                 /* リンク文字色 */
+  margin-left: 20px;
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.5s;
+}
+nav a:hover {
+  color: #d5ff3e;
+}
+
+/* --- セクション --- */
+.section {
+  min-height: 100vh;
+  padding: 100px 40px;
+  position: relative;
+  z-index: 10;
+}
+.section h2 {
+  font-size: 3rem;
+  color: #d5ff3e;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* --- フェードイン --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- サービス内画像切り替え --- */
+.image-gallery {
+  position: relative;
+  height: 300px;
+  margin-bottom: 20px;
+}
+.gallery-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  border-radius: 10px;
+}
+.gallery-img.active {
+  opacity: 1;
+}
+
+/* --- 斜線背景キャンバス --- */
+#lineCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* --- フッター --- */
+footer {
+  background: #111;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 20px;
+  }
+  .section h1 {
+    font-size: 2rem;
+  }
+}
+.explode-text span {
+  display: inline-block;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.explode-text.hovered span {
+  opacity: 0;
+}
+
+.scene {
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  margin: 100px auto;
+}
+
+.cube {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg) rotateY(20deg);
+  transition: transform 0.3s;
+}
+
+.face {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  backface-visibility: hidden;
+}
+
+.face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 各面の配置 */
+.front  { transform: rotateY(  0deg) translateZ(150px); }
+.back   { transform: rotateY(180deg) translateZ(150px); }
+.right  { transform: rotateY( 90deg) translateZ(150px); }
+.left   { transform: rotateY(-90deg) translateZ(150px); }
+.top    { transform: rotateX( 90deg) translateZ(150px); }
+.bottom { transform: rotateX(-90deg) translateZ(150px); }
+
+
+/* ローディング */
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 3rem;
+  opacity: 1;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 波アニメーション */
+.wave {
+  position: absolute;
+  bottom: -100%;
+  right: -100%;
+  width: 200%;
+  height: 200%;
+  background: #d5ff3e;
+  transform: rotate(-45deg);
+  border-radius: 50%;
+  z-index: 999;
+  animation: waveIn 2s ease-in-out forwards;
+  animation-delay: 3s;
+  opacity: 0;
+}
+
+@keyframes waveIn {
+  0% {
+    bottom: -100%;
+    right: -100%;
+    opacity: 1;
+  }
+  100% {
+    bottom: 0;
+    right: 0;
+    opacity: 1;
+  }
+}
+
+
+/* Contact セクション（ゴールドテーマ） */
+.contact-screen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10%;
+  background: linear-gradient(to left, #1a1a1a, #2e2e2e);
+  color: #fff;
+  position: relative;
+}
+
+.contact-content {
+  text-align: right;
+  max-width: 400px;
+}
+
+.contact-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative;
+  color: #ffd700; /* ゴールド */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.contact-content p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+/* グリッチ風タイトル（ゴールド対応） */
+.fade-in-glitch h1 {
+  animation: glitch-gold 2s linear infinite alternate;
+}
+
+.fade-in-glitch p {
+  animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+/* グリッチアニメーション（金色バージョン） */
+@keyframes glitch-gold {
+  0% { text-shadow: 2px 2px gold, -2px -2px goldenrod; }
+  25% { text-shadow: -2px 2px #fffacd, 2px -2px #daa520; }
+  50% { text-shadow: 2px -2px #ffd700, -2px 2px #ffec8b; }
+  75% { text-shadow: -1px -1px white, 1px 1px black; }
+  100% { text-shadow: 0 0 12px #ffd700; }
+}
